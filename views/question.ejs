@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/output.css">
+    <title>Bankit</title>
+</head>
+<body>
+    <div class="w-full flex justify-center">
+        <%- include('questionCard') %>
+    </div>
+
+    <div class="w-full flex justify-center">
+        <div class="card w-96 bg-base-100 shadow-xl">
+            <div class="card-body items-center text-center">
+                <h3 id="errorArea"></h3>
+                <input type="text" placeholder="Answer Author (Leave blank for anonymous)" class="input input-bordered input-xs w-full max-w-xs" id="answerAuthorInput"/>
+                <input type="text" placeholder="Answer Text" class="input input-bordered input-xs w-full max-w-xs" id="answerTextInput"/>
+                <button class="btn btn-active btn-primary" id="newAnswerButton">Post New Answer</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full flex justify-center">
+        <div class="card w-96 bg-base-100 shadow-xl">
+            <div class="card-body items-center text-center">
+                <h3>Answers:</h3>
+                <ol>
+                    <% for (let i = 0; i < question.answers.length; i++) {%>
+                        <li><span><%= question.answers[i].author %>: <%= question.answers[i].answerText %></span></li>
+                    <% } %>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <a href="/logout">Logout</a>
+
+
+    <script src="/js/question.js"></script>
+</body>
+</html>
